@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c11286rt17r7r"
-path="res://.godot/imported/titanic10.blend-478d100b520b36093099f74c43b0d362.scn"
+uid="uid://c0cg41e08w4vc"
+path="res://.godot/imported/rocks.blend-fc06f1b3fecb00834eb1224158ff907e.scn"
 
 [deps]
 
-source_file="res://titanic10.blend"
-dest_files=["res://.godot/imported/titanic10.blend-478d100b520b36093099f74c43b0d362.scn"]
+source_file="res://Assets/rocks.blend"
+dest_files=["res://.godot/imported/rocks.blend-fc06f1b3fecb00834eb1224158ff907e.scn"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cm3pjvb1qm325"]
 
-[ext_resource type="PackedScene" uid="uid://c11286rt17r7r" path="res://titanic10.blend" id="1_tc2uv"]
+[ext_resource type="PackedScene" uid="uid://c11286rt17r7r" path="res://Assets/Titanic.blend" id="1_pvulx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4k01s"]
 sky_top_color = Color(0.254902, 0.290196, 0.52549, 1)
@@ -22,7 +22,7 @@ glow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_eherg")
 
-[node name="titanic10" parent="." instance=ExtResource("1_tc2uv")]
+[node name="titanic10" parent="." instance=ExtResource("1_pvulx")]
 transform = Transform3D(0.476662, 0.281403, 0.83283, 0.0417732, 0.93906, -0.341205, -0.878094, 0.197429, 0.435859, -1.8333, -3.44112, -7.53825)
 
 [node name="Camera3D" type="Camera3D" parent="."]
