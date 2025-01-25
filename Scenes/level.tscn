@@ -1,16 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkvjmw8yj7y2e"]
+[gd_scene load_steps=3 format=3 uid="uid://bkvjmw8yj7y2e"]
 
-[ext_resource type="PackedScene" uid="uid://dr36rc3vikrby" path="res://Scenes/Environment.tscn" id="1_lra0q"]
+[ext_resource type="PackedScene" uid="uid://b84kwcfmnd5s0" path="res://Scenes/Environment.tscn" id="1_lra0q"]
+[ext_resource type="PackedScene" uid="uid://b4ush5jwjvvc8" path="res://Scenes/character_view.tscn" id="2_xbmrr"]
 
 [node name="Level" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 672.464, -0.858)
-fov = 30.0
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-transform = Transform3D(-0.896976, -0.442065, -0.00352329, 0.44203, -0.896732, -0.0219493, 0.00654357, -0.0212454, 0.999753, 1.20143, -0.85933, 65.5748)
-spot_range = 1361.69
-spot_angle = 38.3909
-
 [node name="Environment" parent="." instance=ExtResource("1_lra0q")]
+
+[node name="CharacterView" parent="." instance=ExtResource("2_xbmrr")]
