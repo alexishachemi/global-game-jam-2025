@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cplc6shidttsm"
+path.s3tc="res://.godot/imported/N_00870baaa2c5494e85d6ee1bde12c1e3_HIGHTOLOWvent13_normal-tga.png-3c4b0914d6f8cdaaac6fb17a3418d495.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Assets/seafloor/N_00870baaa2c5494e85d6ee1bde12c1e3_HIGHTOLOWvent13_normal-tga.png"
+dest_files=["res://.godot/imported/N_00870baaa2c5494e85d6ee1bde12c1e3_HIGHTOLOWvent13_normal-tga.png-3c4b0914d6f8cdaaac6fb17a3418d495.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Assets/seafloor/N_00870baaa2c5494e85d6ee1bde12c1e3_HIGHTOLOWvent13_normal-tga.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
