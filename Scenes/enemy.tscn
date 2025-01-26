@@ -7,6 +7,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p478t"]
 size = Vector2(123, 48)
 
+[sub_resource type="Animation" id="Animation_66u2p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_o33n1"]
 resource_name = "move"
 length = 0.7
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_66u2p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbsbd"]
 _data = {
 "RESET": SubResource("Animation_66u2p"),
@@ -51,7 +51,6 @@ script = ExtResource("1_n18ok")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_535id")
 hframes = 4
-frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
