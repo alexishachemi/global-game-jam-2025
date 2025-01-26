@@ -1,7 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://clrjafbgadma4"]
+[gd_scene load_steps=46 format=3 uid="uid://b4ush5jwjvvc8"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_cygh3"]
-[ext_resource type="PackedScene" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
+[ext_resource type="PackedScene" uid="uid://bs78cipryjfqd" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
 [ext_resource type="Script" path="res://Scripts/camera_controller.gd" id="3_f2mw0"]
 [ext_resource type="Texture2D" uid="uid://dt2u0wdjc30s7" path="res://Assets/character-walk.png" id="4_kuobe"]
 [ext_resource type="Texture2D" uid="uid://xgytl0g21y5f" path="res://Assets/character-idle.png" id="4_o1mb5"]
@@ -303,7 +303,6 @@ bg_color = Color(0.976471, 0, 0.176471, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-fov = 30.0
 script = ExtResource("3_f2mw0")
 target = NodePath("../Character3DPosition")
 

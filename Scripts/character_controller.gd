@@ -88,12 +88,3 @@ func _physics_process(_delta: float) -> void:
 	velocity = input_direction * speed
 	playAnimation(velocity)
 	move_and_slide()
-
-	# Update the 3D position based on the 2D character's position
-	if not _target_3d:
-		return
-		
-	_target_3d.global_position = Vector3(
-		(position.x - _start_pos.x) * dim_scale,
-		670,
-		(position.y - _start_pos.y) * dim_scale)
