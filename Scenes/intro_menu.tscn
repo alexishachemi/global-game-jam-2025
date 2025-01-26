@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/intro_path.gd" id="1_vd87n"]
 [ext_resource type="Script" path="res://Scripts/sub_follow_path.gd" id="2_xaa3l"]
 [ext_resource type="Texture2D" uid="uid://5q3k1pno1fn1" path="res://Assets/submarine_resized.png" id="3_wuh46"]
-[ext_resource type="PackedScene" path="res://Scenes/underwater_shader.tscn" id="4_b3u4x"]
+[ext_resource type="PackedScene" uid="uid://q87urgp564bc" path="res://Scenes/underwater_shader.tscn" id="4_b3u4x"]
 [ext_resource type="AudioStream" uid="uid://bdqkr3oksg34w" path="res://Assets/BOOBS_Intro.mp3" id="5_shqi7"]
 [ext_resource type="AudioStream" uid="uid://bkf6sdhp42pqh" path="res://Assets/Explosion_Intro.mp3" id="6_il76f"]
 [ext_resource type="AudioStream" uid="uid://c5qncgn5dcglw" path="res://Assets/Homesong.mp3" id="7_d15fj"]
@@ -504,6 +504,5 @@ explosiveness = 1.0
 local_coords = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-position = Vector2(41, -200)
-scale = Vector2(0.6, 0.6)
+position = Vector2(98, -344)
 texture = ExtResource("10_qdqkl")

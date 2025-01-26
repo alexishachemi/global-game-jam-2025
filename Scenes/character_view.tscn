@@ -1,7 +1,7 @@
 [gd_scene load_steps=63 format=3 uid="uid://b4ush5jwjvvc8"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_cygh3"]
-[ext_resource type="PackedScene" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
+[ext_resource type="PackedScene" uid="uid://q87urgp564bc" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
 [ext_resource type="Script" path="res://Scripts/camera_controller.gd" id="3_f2mw0"]
 [ext_resource type="Texture2D" uid="uid://dt2u0wdjc30s7" path="res://Assets/character-walk.png" id="4_kuobe"]
 [ext_resource type="Texture2D" uid="uid://xgytl0g21y5f" path="res://Assets/character-idle.png" id="4_o1mb5"]
@@ -347,7 +347,6 @@ health_bar = NodePath("HUD/Oxygen")
 camera_target_3d = NodePath("../Character3DPosition")
 
 [node name="UnderwaterShader" parent="CharacterBody2D" instance=ExtResource("2_pedyg")]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_mavn0")
@@ -367,10 +366,10 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -576.0
-offset_top = -326.0
-offset_right = 577.0
-offset_bottom = 323.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0

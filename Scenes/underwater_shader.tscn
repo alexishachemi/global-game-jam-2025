@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs78cipryjfqd"]
+[gd_scene load_steps=6 format=3 uid="uid://q87urgp564bc"]
 
 [ext_resource type="Shader" path="res://Assets/underwater_shader.gdshader" id="1_xg0aw"]
 
@@ -25,6 +25,5 @@ shader_parameter/fast_noise = SubResource("NoiseTexture2D_bb6an")
 
 [node name="UnderwaterShader" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7ry7m")
-position = Vector2(573.25, 323.25)
-scale = Vector2(1147.5, 647.5)
+scale = Vector2(1920, 1083.4)
 texture = SubResource("CanvasTexture_03pgm")
