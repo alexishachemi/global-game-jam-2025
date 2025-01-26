@@ -58,8 +58,6 @@ func _process(delta: float) -> void:
 		var pnode = player_controller.instantiate()
 		lvl.add_child(pnode)
 		pnode.position = Vector3(0, 300, 0)
-		#var new_cam: Camera2D = pnode.get_node("CharacterBody2D/Camera2D")
-		#new_cam.make_current()
 		watershader.visible = false
 		Game.game_started = true
 	
