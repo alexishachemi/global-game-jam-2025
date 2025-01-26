@@ -3,6 +3,7 @@ extends CharacterBody2D
 # Movement speed
 @export var speed: float = 200.0
 @export var dim_scale: float = 0.02
+@onready var animations = $AnimatedSprite2D
 
 # Reference to the 3D Position3D or Marker3D node
 @export var camera_target_3d: NodePath
@@ -16,6 +17,10 @@ var viewport_rect: Rect2
 # Calculate the center in 2D position
 var screen_center_2d: Vector2
 
+# only playAnimation should be using this variable
+# This is the direction of the sprite
+var direction: String;
+
 var _start_pos: Vector2
 
 func _ready() -> void:
@@ -27,6 +32,23 @@ func _ready() -> void:
 	screen_center_2d = viewport_rect.size / 2
 	global_position = screen_center_2d
 	_start_pos = global_position
+
+
+func playAnimation(velocity: Vector2) -> void:
+	if velocity.length() != 0:
+		if velocity.x < 0:
+			direction = "side"
+			animations.flip_h = true
+		elif velocity.x > 0:
+			direction = "side"
+			animations.flip_h = false
+		elif velocity.y < 0:
+			direction = "top"
+		else: direction = "bot"
+		animations.play("walk-" + direction)
+	else:
+		animations.play("idle-" + direction)
+
 
 func _physics_process(_delta: float) -> void:
 	# Handle 2D input
@@ -44,6 +66,7 @@ func _physics_process(_delta: float) -> void:
 
 	# Apply movement and update velocity
 	velocity = input_direction * speed
+	playAnimation(velocity)
 	move_and_slide()
 
 	# Update the 3D position based on the 2D character's position
