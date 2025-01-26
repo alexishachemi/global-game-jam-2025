@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 # Movement speed
@@ -11,7 +12,7 @@ var direction: String = "bot";
 # health bar variable
 @export var max_health: int = 100
 var health: int
-@onready var health_bar = $HealthBar
+@export var health_bar: TextureProgressBar
 
 # Reference to the 3D Position3D or Marker3D node
 @export var camera_target_3d: NodePath
@@ -28,6 +29,7 @@ var screen_center_2d: Vector2
 var _start_pos: Vector2
 
 func _ready() -> void:
+	Game.player = self
 	if camera_target_3d:
 		_target_3d = get_node(camera_target_3d)
 	else:

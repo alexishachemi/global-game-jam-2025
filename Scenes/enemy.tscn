@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtprngxxeufc4"]
+[gd_scene load_steps=8 format=3 uid="uid://ds2iewatbsr4o"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_n18ok"]
 [ext_resource type="Texture2D" uid="uid://b3q2g81eyjw7b" path="res://Assets/enemie assets/sword_fish.png" id="2_535id"]

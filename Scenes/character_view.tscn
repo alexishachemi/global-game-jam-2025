@@ -1,10 +1,21 @@
-[gd_scene load_steps=46 format=3 uid="uid://b4ush5jwjvvc8"]
+[gd_scene load_steps=62 format=3 uid="uid://b4ush5jwjvvc8"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_cygh3"]
 [ext_resource type="PackedScene" uid="uid://bs78cipryjfqd" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
 [ext_resource type="Script" path="res://Scripts/camera_controller.gd" id="3_f2mw0"]
 [ext_resource type="Texture2D" uid="uid://dt2u0wdjc30s7" path="res://Assets/character-walk.png" id="4_kuobe"]
 [ext_resource type="Texture2D" uid="uid://xgytl0g21y5f" path="res://Assets/character-idle.png" id="4_o1mb5"]
+[ext_resource type="Texture2D" uid="uid://d1htgic0b0vo8" path="res://Assets/Frame.png" id="6_4erc0"]
+[ext_resource type="Texture2D" uid="uid://c143b0mmuy52d" path="res://Assets/bubbles/oxygen_tank_back.png" id="6_ngqmq"]
+[ext_resource type="Texture2D" uid="uid://dhw0xr3xr8uud" path="res://Assets/bubbles/oxygen_tank_front.png" id="7_b4qow"]
+[ext_resource type="Texture2D" uid="uid://lknw0osdu21c" path="res://Assets/bubbles/oxygen_tank_bar.png" id="8_xhwr3"]
+[ext_resource type="Texture2D" uid="uid://d3p6la7wyc61o" path="res://Assets/portait/neutral.png" id="10_rsm5b"]
+[ext_resource type="Script" path="res://Scripts/portrait.gd" id="11_jvb7m"]
+[ext_resource type="Script" path="res://Ressources/face.gd" id="12_0budy"]
+[ext_resource type="Script" path="res://Scripts/depth_progress.gd" id="13_7n38d"]
+[ext_resource type="Texture2D" uid="uid://cm122jjtt1eiq" path="res://Assets/portait/happy.png" id="13_hsfti"]
+[ext_resource type="Texture2D" uid="uid://bd6vbqhorerel" path="res://Assets/mini_char.png" id="13_oti3m"]
+[ext_resource type="Texture2D" uid="uid://cupq0prycorw4" path="res://Assets/portait/hurt.png" id="14_tq3h1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mavn0"]
 
@@ -293,11 +304,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41ywm"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="Resource" id="Resource_42my5"]
+script = ExtResource("12_0budy")
+nickname = &"neutral"
+texture = ExtResource("10_rsm5b")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjpri"]
-bg_color = Color(0.976471, 0, 0.176471, 1)
+[sub_resource type="Resource" id="Resource_ouynr"]
+script = ExtResource("12_0budy")
+nickname = &"happy"
+texture = ExtResource("13_hsfti")
+
+[sub_resource type="Resource" id="Resource_cs4y4"]
+script = ExtResource("12_0budy")
+nickname = &"hurt"
+texture = ExtResource("14_tq3h1")
+
+[sub_resource type="Gradient" id="Gradient_0r5t5"]
+offsets = PackedFloat32Array(0.632353, 1)
+colors = PackedColorArray(0, 0.0773845, 0.209629, 1, 0, 0.557532, 0.813123, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ka4sy"]
+gradient = SubResource("Gradient_0r5t5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8s0rk"]
+texture = SubResource("GradientTexture1D_ka4sy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2chi"]
 
 [node name="CharacterView" type="Node3D"]
 
@@ -306,10 +338,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 script = ExtResource("3_f2mw0")
 target = NodePath("../Character3DPosition")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("1_cygh3")
 speed = 200.0
 dim_scale = 0.1
+health_bar = NodePath("HUD/Oxygen")
 camera_target_3d = NodePath("../Character3DPosition")
 
 [node name="UnderwaterShader" parent="CharacterBody2D" instance=ExtResource("2_pedyg")]
@@ -326,18 +359,92 @@ sprite_frames = SubResource("SpriteFrames_5igax")
 animation = &"idle-bot"
 frame_progress = 0.753044
 
-[node name="HealthBar" type="ProgressBar" parent="CharacterBody2D"]
-offset_left = -17.0
-offset_top = -25.0
-offset_right = -13.0
-offset_bottom = 2.0
-rotation = -0.00269014
-scale = Vector2(8.40633, 0.0754915)
-theme_override_styles/background = SubResource("StyleBoxFlat_41ywm")
-theme_override_styles/fill = SubResource("StyleBoxFlat_vjpri")
-value = 100.0
-show_percentage = false
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 
+[node name="HUD" type="Control" parent="CharacterBody2D"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = -326.0
+offset_right = 577.0
+offset_bottom = 323.0
+grow_horizontal = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Frame" type="TextureRect" parent="CharacterBody2D/HUD"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 42.0
+offset_right = 176.0
+offset_bottom = 178.0
+texture = ExtResource("6_4erc0")
+
+[node name="Oxygen" type="TextureProgressBar" parent="CharacterBody2D/HUD"]
+layout_mode = 1
+offset_left = 149.0
+offset_top = 15.0
+offset_right = 170.0
+offset_bottom = 73.0
+scale = Vector2(3, 3)
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("6_ngqmq")
+texture_over = ExtResource("7_b4qow")
+texture_progress = ExtResource("8_xhwr3")
+texture_progress_offset = Vector2(0, 14)
+
+[node name="Portrait" type="TextureRect" parent="CharacterBody2D/HUD"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 51.0
+offset_right = 166.0
+offset_bottom = 168.0
+texture = ExtResource("10_rsm5b")
+script = ExtResource("11_jvb7m")
+faces = Array[ExtResource("12_0budy")]([SubResource("Resource_42my5"), SubResource("Resource_ouynr"), SubResource("Resource_cs4y4")])
+
+[node name="Timer" type="Timer" parent="CharacterBody2D/HUD/Portrait"]
+one_shot = true
+
+[node name="Depth" type="ProgressBar" parent="CharacterBody2D/HUD" node_paths=PackedStringArray("icon")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 307.5
+offset_right = 570.0
+offset_bottom = 333.5
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5708
+theme_override_styles/background = SubResource("StyleBoxTexture_8s0rk")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_j2chi")
+show_percentage = false
+script = ExtResource("13_7n38d")
+icon = NodePath("Icon")
+icon_initial_position = Vector2(26, 2)
+
+[node name="Icon" type="TextureRect" parent="CharacterBody2D/HUD/Depth"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -11.0
+offset_right = 70.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_oti3m")
+
 [node name="Character3DPosition" type="Marker3D" parent="."]
+
+[connection signal="timeout" from="CharacterBody2D/HUD/Portrait/Timer" to="CharacterBody2D/HUD/Portrait" method="_on_timer_timeout"]
