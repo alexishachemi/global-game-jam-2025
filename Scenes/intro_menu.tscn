@@ -596,7 +596,7 @@ libraries = {
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 curve = SubResource("Curve3D_40dw0")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" node_paths=PackedStringArray("explosion_particules", "submarine_sprite", "submarine_pathfollow", "watershader", "homesprite")]
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" node_paths=PackedStringArray("explosion_particules", "submarine_sprite", "sub_marine_particultes", "submarine_pathfollow", "watershader", "homesprite")]
 transform = Transform3D(0.707105, -0.0249356, 0.706664, 2.79396e-09, 0.999371, 0.0352644, -0.707105, -0.0249356, 0.706665, 999.93, 2150.01, 999.93)
 progress = 0.1
 cubic_interp = false
@@ -604,6 +604,7 @@ loop = false
 script = ExtResource("1_vd87n")
 explosion_particules = NodePath("../../Node2D/GPUParticles2D")
 submarine_sprite = NodePath("Camera3D/Path3D/PathFollow3D/Sprite3D")
+sub_marine_particultes = NodePath("Camera3D/Path3D/PathFollow3D/GPUParticles3D")
 submarine_pathfollow = NodePath("Camera3D/Path3D/PathFollow3D")
 watershader = NodePath("Camera3D/Camera2D/UnderwaterShader")
 homesprite = NodePath("../../Node2D/Sprite2D")
@@ -624,7 +625,8 @@ transform = Transform3D(0.949285, 0.137314, 0.282846, -0.224226, 0.926282, 0.302
 texture_filter = 0
 texture = ExtResource("3_wuh46")
 
-[node name="GPUParticles3D" parent="Path3D/PathFollow3D/Camera3D/Path3D/PathFollow3D/Sprite3D" instance=ExtResource("4_of3am")]
+[node name="GPUParticles3D" parent="Path3D/PathFollow3D/Camera3D/Path3D/PathFollow3D" instance=ExtResource("4_of3am")]
+transform = Transform3D(0.949285, 0.137314, 0.282846, -0.224226, 0.926282, 0.302861, -0.220408, -0.350923, 0.910095, -0.0238523, -0.0256348, -0.0767822)
 
 [node name="Camera2D" type="Camera2D" parent="Path3D/PathFollow3D/Camera3D"]
 

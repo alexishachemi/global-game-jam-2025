@@ -5,6 +5,7 @@ extends PathFollow3D
 
 @export var explosion_particules: GPUParticles2D
 @export var submarine_sprite: Sprite3D
+@export var sub_marine_particultes: GPUParticles3D
 @export var submarine_pathfollow: PathFollow3D
 @onready var player_controller: PackedScene = preload("res://Scenes/character_view.tscn")
 @export var watershader: Node
@@ -55,6 +56,7 @@ func _process(delta: float) -> void:
 		explosion_particules.restart()
 		explosion_particules.emitting = true
 		submarine_sprite.visible = false
+		sub_marine_particultes.emitting = false
 		var pnode = player_controller.instantiate()
 		lvl.add_child(pnode)
 		pnode.position = Vector3(0, 300, 0)
