@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://clrjafbgadma4"]
+[gd_scene load_steps=46 format=3 uid="uid://clrjafbgadma4"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_cygh3"]
 [ext_resource type="PackedScene" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
@@ -293,6 +293,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41ywm"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjpri"]
+bg_color = Color(0.976471, 0, 0.176471, 1)
+
 [node name="CharacterView" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -303,7 +309,6 @@ target = NodePath("../Character3DPosition")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_cygh3")
-camera_target_3d = NodePath("../Character3DPosition")
 
 [node name="UnderwaterShader" parent="CharacterBody2D" instance=ExtResource("2_pedyg")]
 position = Vector2(0, 0)
@@ -318,5 +323,19 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5igax")
 animation = &"idle-bot"
 frame_progress = 0.753044
+
+[node name="HealthBar" type="ProgressBar" parent="CharacterBody2D"]
+offset_left = -17.0
+offset_top = -25.0
+offset_right = -13.0
+offset_bottom = 2.0
+rotation = -0.00269014
+scale = Vector2(8.40633, 0.0754915)
+theme_override_styles/background = SubResource("StyleBoxFlat_41ywm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vjpri")
+value = 100.0
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 
 [node name="Character3DPosition" type="Marker3D" parent="."]
