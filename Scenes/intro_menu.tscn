@@ -442,6 +442,7 @@ shader_parameter/sprite = ExtResource("3_wuh46")
 [node name="IntroMenu" type="Node3D"]
 
 [node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 curve = SubResource("Curve3D_40dw0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" node_paths=PackedStringArray("explosion_particules", "submarine_sprite", "submarine_pathfollow", "watershader", "homesprite")]
