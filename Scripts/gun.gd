@@ -9,6 +9,8 @@ const BULLET = preload("res://Scenes/bullet.tscn")
 @onready var gun_audio = $pop_audio
 
 func _process(delta: float) -> void:
+	if not Game.game_started:
+		return
 	look_at(get_global_mouse_position())
  
 	rotation_degrees = wrap(rotation_degrees, 0, 360)

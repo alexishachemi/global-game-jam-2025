@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal dead
+
 @export var speed = 100 
 @export var rush_speed = 200  # Speed when rushing
 @export var tremble_duration = 1.0  # Time to tremble before rushing
@@ -45,7 +47,7 @@ func start_rush():
 	is_rushing = true
 
 func _physics_process(delta):
-	if not player or not is_alive:
+	if not player or not is_alive or not Game.game_started:
 		return
 	
 	player_position = player.position
@@ -85,5 +87,9 @@ func take_damage(amount: int):
 		await death_audio.finished
 		die()
 
+func _process(_delta):
+	visible = Game.game_started
+
 func die():
+	dead.emit()
 	queue_free()

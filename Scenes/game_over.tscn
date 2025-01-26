@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0w5nyqovt0op"]
+
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_f8fbd"]
+[ext_resource type="FontFile" uid="uid://dgnmlptky0pf0" path="res://Assets/GamiliaPixel-Regular.otf" id="2_4e2ke"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uyxbk"]
+font = ExtResource("2_4e2ke")
+font_size = 200
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f8fbd")
+
+[node name="text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -517.5
+offset_top = -248.0
+offset_right = 517.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_uyxbk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = 80.0
+offset_right = 198.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_4e2ke")
+theme_override_font_sizes/font_size = 40
+text = "To main menu"
+
+[node name="desktop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = 189.775
+offset_right = 198.0
+offset_bottom = 260.775
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_4e2ke")
+theme_override_font_sizes/font_size = 40
+text = "To desktop"
+
+[connection signal="pressed" from="menu" to="." method="_menu_btn_pressed"]
+[connection signal="pressed" from="desktop" to="." method="_quit_btn_pressed"]

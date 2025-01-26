@@ -53,9 +53,10 @@ func update_health_bar():
 		health_bar.value = health
 
 func die():
-	print("Player has died!")
-	#please add the logic of the game afterwards,
-	#in the sense that do we restart or respawn, please El Grande Pineau tell us
+	Game.game_over.visible = true
+	Game.portrait.set_face("hurt")
+	Game.game_started = false
+	visible = false
 
 func playAnimation(velocity: Vector2) -> void:
 	if velocity.length() != 0:
@@ -73,7 +74,8 @@ func playAnimation(velocity: Vector2) -> void:
 		animations.play("idle-" + direction)
 
 func _physics_process(_delta: float) -> void:
-	# Handle 2D input
+	if not Game.game_started:
+		return
 	var input_direction = Vector2.ZERO
 	input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 

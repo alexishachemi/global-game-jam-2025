@@ -20,12 +20,15 @@ const enemy_scene = preload("res://Scenes/enemy.tscn")
 @export var enemies_per_wave_increase: int = 1
 var current_wave: int = 0
 var enemies_to_spawn: int = 1
+var killed: int = 0
 
 var interval: float = 0.0
 var ascending := true
 var distance: float
 var spawn_timer: float = 0.0
-	
+
+@onready var game_over_node := $GameOver
+
 func start_wave():
 	for i in range(enemies_to_spawn):
 		spawn_enemy()

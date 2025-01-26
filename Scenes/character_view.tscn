@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b4ush5jwjvvc8"]
+[gd_scene load_steps=64 format=3 uid="uid://b4ush5jwjvvc8"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_cygh3"]
 [ext_resource type="PackedScene" uid="uid://bs78cipryjfqd" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cm122jjtt1eiq" path="res://Assets/portait/happy.png" id="13_hsfti"]
 [ext_resource type="Texture2D" uid="uid://bd6vbqhorerel" path="res://Assets/mini_char.png" id="13_oti3m"]
 [ext_resource type="Texture2D" uid="uid://cupq0prycorw4" path="res://Assets/portait/hurt.png" id="14_tq3h1"]
+[ext_resource type="PackedScene" uid="uid://b0w5nyqovt0op" path="res://Scenes/game_over.tscn" id="17_0erhn"]
 [ext_resource type="PackedScene" path="res://Scenes/gun.tscn" id="17_j5ebh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mavn0"]
@@ -342,7 +343,6 @@ target = NodePath("../Character3DPosition")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("1_cygh3")
 speed = 200.0
-dim_scale = 0.1
 health_bar = NodePath("HUD/Oxygen")
 camera_target_3d = NodePath("../Character3DPosition")
 
@@ -444,6 +444,9 @@ grow_vertical = 0
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_oti3m")
+
+[node name="GameOver" parent="CharacterBody2D/HUD" instance=ExtResource("17_0erhn")]
+layout_mode = 1
 
 [node name="Gun" parent="CharacterBody2D" instance=ExtResource("17_j5ebh")]
 
