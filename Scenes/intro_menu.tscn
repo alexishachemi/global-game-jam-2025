@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8y4v2su6k8x"]
+[gd_scene load_steps=24 format=3 uid="uid://c8y4v2su6k8x"]
 
 [ext_resource type="Script" path="res://Scripts/intro_path.gd" id="1_vd87n"]
 [ext_resource type="Script" path="res://Scripts/sub_follow_path.gd" id="2_xaa3l"]
 [ext_resource type="Texture2D" uid="uid://5q3k1pno1fn1" path="res://Assets/submarine_resized.png" id="3_wuh46"]
-[ext_resource type="PackedScene" uid="uid://bs78cipryjfqd" path="res://Scenes/underwater_shader.tscn" id="4_b3u4x"]
+[ext_resource type="PackedScene" uid="uid://q87urgp564bc" path="res://Scenes/underwater_shader.tscn" id="4_b3u4x"]
+[ext_resource type="PackedScene" uid="uid://b47m241hfmplk" path="res://Scenes/submarine_particules.tscn" id="4_of3am"]
 [ext_resource type="AudioStream" uid="uid://bdqkr3oksg34w" path="res://Assets/BOOBS_Intro.mp3" id="5_shqi7"]
 [ext_resource type="AudioStream" uid="uid://bkf6sdhp42pqh" path="res://Assets/Explosion_Intro.mp3" id="6_il76f"]
 [ext_resource type="AudioStream" uid="uid://c5qncgn5dcglw" path="res://Assets/Homesong.mp3" id="7_d15fj"]
@@ -623,6 +624,8 @@ transform = Transform3D(0.949285, 0.137314, 0.282846, -0.224226, 0.926282, 0.302
 texture_filter = 0
 texture = ExtResource("3_wuh46")
 
+[node name="GPUParticles3D" parent="Path3D/PathFollow3D/Camera3D/Path3D/PathFollow3D/Sprite3D" instance=ExtResource("4_of3am")]
+
 [node name="Camera2D" type="Camera2D" parent="Path3D/PathFollow3D/Camera3D"]
 
 [node name="UnderwaterShader" parent="Path3D/PathFollow3D/Camera3D/Camera2D" instance=ExtResource("4_b3u4x")]
@@ -667,7 +670,7 @@ anchor_right = 0.47
 anchor_bottom = 0.028
 offset_left = -2232.58
 offset_top = -205.512
-offset_right = 69.1311
+offset_right = 69.1351
 offset_bottom = 108.712
 text = "Battle Out  Of Bubble Sea"
 label_settings = SubResource("LabelSettings_3f8ts")
