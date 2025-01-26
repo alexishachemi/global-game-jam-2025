@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct77bq48c8uw5"]
+
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_ndklo"]
+[ext_resource type="Texture2D" uid="uid://my1dm31y723j" path="res://Assets/gun/rock.png" id="2_s4jf5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkebo"]
+size = Vector2(14, 14)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_ndklo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.383725, 0.383725)
+texture = ExtResource("2_s4jf5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jkebo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

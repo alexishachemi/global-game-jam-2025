@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3bvokyh62i7s"]
+[gd_scene load_steps=5 format=3 uid="uid://c3bvokyh62i7s"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_c8544"]
 [ext_resource type="PackedScene" uid="uid://dr36rc3vikrby" path="res://Scenes/Environment.tscn" id="1_lra0q"]
 [ext_resource type="PackedScene" uid="uid://b4ush5jwjvvc8" path="res://Scenes/character_view.tscn" id="2_xbmrr"]
+[ext_resource type="PackedScene" uid="uid://3ih00dwwdi6r" path="res://Scenes/enemy.tscn" id="4_3iyxq"]
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("environment")]
 script = ExtResource("1_c8544")
@@ -16,3 +17,5 @@ target = NodePath("../CharacterView")
 
 [node name="CharacterView" parent="." instance=ExtResource("2_xbmrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("4_3iyxq")]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=62 format=3 uid="uid://b4ush5jwjvvc8"]
+[gd_scene load_steps=63 format=3 uid="uid://b4ush5jwjvvc8"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_cygh3"]
-[ext_resource type="PackedScene" uid="uid://bs78cipryjfqd" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
+[ext_resource type="PackedScene" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
 [ext_resource type="Script" path="res://Scripts/camera_controller.gd" id="3_f2mw0"]
 [ext_resource type="Texture2D" uid="uid://dt2u0wdjc30s7" path="res://Assets/character-walk.png" id="4_kuobe"]
 [ext_resource type="Texture2D" uid="uid://xgytl0g21y5f" path="res://Assets/character-idle.png" id="4_o1mb5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cm122jjtt1eiq" path="res://Assets/portait/happy.png" id="13_hsfti"]
 [ext_resource type="Texture2D" uid="uid://bd6vbqhorerel" path="res://Assets/mini_char.png" id="13_oti3m"]
 [ext_resource type="Texture2D" uid="uid://cupq0prycorw4" path="res://Assets/portait/hurt.png" id="14_tq3h1"]
+[ext_resource type="PackedScene" uid="uid://cgpj54aytw6or" path="res://Scenes/gun.tscn" id="17_j5ebh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mavn0"]
 
@@ -444,6 +445,8 @@ grow_vertical = 0
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_oti3m")
+
+[node name="Gun" parent="CharacterBody2D" instance=ExtResource("17_j5ebh")]
 
 [node name="Character3DPosition" type="Marker3D" parent="."]
 
