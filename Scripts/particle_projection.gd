@@ -19,12 +19,12 @@ func _process(delta: float):
 	var sprite_3d_position = sprite_3d_node.global_transform.origin
 
 	# Convert it to screen space
-	var viewport = get_viewport()
-	var camera = viewport.get_camera_3d()
+	var viewport_rect = get_viewport().get_visible_rect()
+	var camera = get_viewport().get_camera_3d()
 	var screen_position = camera.unproject_position(sprite_3d_position)
 
 	# Adjust for screen center offset
-	var screen_size = viewport.size
+	var screen_size = viewport_rect.size
 	var adjusted_position = screen_position - (Vector2(screen_size) / 2)
 
 	# Update the Particles2D position
