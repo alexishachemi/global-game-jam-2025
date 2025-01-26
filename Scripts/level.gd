@@ -49,6 +49,11 @@ func update_ascension(delta):
 	Game.progress_bar.value = (distance * 100) / end
 
 func _process(delta):
+	if not Game.game_started:
+		return
 	update_ascension(delta)
 	if not ascending and Input.is_action_pressed("ui_accept"):
 		resume_ascension()
+
+func _ready() -> void:
+	Game.game_started = false

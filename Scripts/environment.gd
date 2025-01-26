@@ -12,6 +12,9 @@ extends Node3D
 @onready var animator: AnimationPlayer = $AnimationPlayer
 
 func _process(delta):
+	if Game.game_started and not $SurfaceLight.visible:
+		$SurfaceLight.visible = true
+		target = get_parent().get_node("CharacterView")
 	if not target:
 		return
 	if target.position.y - position.y >= target_limit_y:

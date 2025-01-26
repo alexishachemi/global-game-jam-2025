@@ -13,7 +13,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_40dw0"]
 _data = {
-"points": PackedVector3Array(0.185791, -0.0512695, 0.187073, 0, 0, 0, 1000, 2150, 1000, 18.0927, 5.66772, 18.0895, -18.0927, -5.66772, -18.0895, 980, 2145, 980, 428.184, 375.576, 427.439, -428.184, -375.576, -427.439, 500, 1700, 500, 0, 90, 0, 0, -90, 0, 0, 900, 0, 0, 90, 0, 0, 0, 0, 0, 300, 0),
+"points": PackedVector3Array(0.185791, -0.0512695, 0.187073, 0, 0, 0, 1000, 2150, 1000, 18.093, 5.668, 18.093, -18.093, -5.668, -18.093, 980, 2145, 980, 428.184, 375.576, 428.184, -428.184, -375.576, -428.184, 500, 1700, 500, 0, 90, 0, 0, -90, 0, 0, 900, 0, 0, 90, 0, 0, 0, 0, 0, 300, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -445,7 +445,7 @@ shader_parameter/sprite = ExtResource("3_wuh46")
 curve = SubResource("Curve3D_40dw0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" node_paths=PackedStringArray("explosion_particules", "submarine_sprite", "submarine_pathfollow", "watershader", "homesprite")]
-transform = Transform3D(0.707304, -0.0250351, 0.706462, 2.97026e-05, 0.999367, 0.0353854, -0.706906, -0.0250073, 0.706861, 999.93, 2150.01, 999.93)
+transform = Transform3D(0.707105, -0.0249356, 0.706664, 2.79396e-09, 0.999371, 0.0352644, -0.707105, -0.0249356, 0.706665, 999.93, 2150.01, 999.93)
 progress = 0.1
 cubic_interp = false
 loop = false

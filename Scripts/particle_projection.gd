@@ -2,6 +2,14 @@ extends Node2D
 
 @export var sprite_3d: NodePath
 @onready var sprite_3d_node = get_node(sprite_3d)
+@onready var home_sprite: Node2D = $Sprite2D
+
+var screen_center_2d: Vector2
+
+func _ready() -> void:
+	var viewport_rect = get_viewport().get_visible_rect()
+	screen_center_2d = viewport_rect.size / 2
+	global_position = screen_center_2d
 
 func _process(delta: float):
 	if not sprite_3d_node:
@@ -20,7 +28,7 @@ func _process(delta: float):
 	var adjusted_position = screen_position - (Vector2(screen_size) / 2)
 
 	# Update the Particles2D position
-	$GPUParticles2D.position = adjusted_position
+	$GPUParticles2D.global_position = adjusted_position + global_position
 
 	# Calculate scale factor based on distance to the camera
 	var camera_position = camera.global_transform.origin

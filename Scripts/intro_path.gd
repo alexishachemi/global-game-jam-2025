@@ -11,7 +11,7 @@ extends PathFollow3D
 @export var homesprite: Sprite2D
 var homespritespeed: float = 100.0
 
-var lvl: Node3D
+@export var lvl: Node3D
 
 var first_done = false
 
@@ -21,6 +21,9 @@ var ongoing = false
 func _ready() -> void:
 	$HomeSongPlayer.play()
 	lvl = get_parent().get_parent().get_parent()
+	var viewport_rect: Rect2 = get_viewport().get_visible_rect()
+	var screen_center_2d: Vector2 = viewport_rect.size / 2
+	get_node("Camera3D/Camera2D").global_position = screen_center_2d
 
 func _process(delta: float) -> void:
 	
@@ -52,6 +55,11 @@ func _process(delta: float) -> void:
 		explosion_particules.restart()
 		explosion_particules.emitting = true
 		submarine_sprite.visible = false
-		lvl.add_child(player_controller.instantiate())
+		var pnode = player_controller.instantiate()
+		lvl.add_child(pnode)
+		pnode.position = Vector3(0, 300, 0)
+		#var new_cam: Camera2D = pnode.get_node("CharacterBody2D/Camera2D")
+		#new_cam.make_current()
 		watershader.visible = false
 		Game.game_started = true
+	
