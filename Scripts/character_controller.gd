@@ -73,18 +73,17 @@ func playAnimation(velocity: Vector2) -> void:
 func _physics_process(_delta: float) -> void:
 	# Handle 2D input
 	var input_direction = Vector2.ZERO
-	if Input.is_action_pressed("ui_right"):
-		input_direction.x += 1
-	if Input.is_action_pressed("ui_left"):
-		input_direction.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		input_direction.y += 1
-	if Input.is_action_pressed("ui_up"):
-		input_direction.y -= 1
-
-	input_direction = input_direction.normalized()
+	input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
 	# Apply movement and update velocity
 	velocity = input_direction * speed
 	playAnimation(velocity)
 	move_and_slide()
+
+# Update the 3D position based on the 2D character's position
+	if not _target_3d:
+		return
+		
+	_target_3d.global_position = Vector3(
+		(position.x - _start_pos.x) * dim_scale, _target_3d.global_position.y,
+		(position.y - _start_pos.y) * dim_scale)

@@ -308,6 +308,9 @@ target = NodePath("../Character3DPosition")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_cygh3")
+speed = 200.0
+dim_scale = 0.1
+camera_target_3d = NodePath("../Character3DPosition")
 
 [node name="UnderwaterShader" parent="CharacterBody2D" instance=ExtResource("2_pedyg")]
 position = Vector2(0, 0)
