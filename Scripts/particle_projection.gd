@@ -13,7 +13,7 @@ func _ready() -> void:
 	global_position = screen_center_2d
 	animator.play("title")
 
-func _process(delta: float):
+func _process(_delta: float):
 	if not sprite_3d_node:
 		return
 

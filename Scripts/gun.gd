@@ -8,7 +8,7 @@ const BULLET = preload("res://Scenes/bullet.tscn")
 @onready var gun_player = $AnimationPlayer
 @onready var gun_audio = $pop_audio
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Game.game_started:
 		return
 	look_at(get_global_mouse_position())

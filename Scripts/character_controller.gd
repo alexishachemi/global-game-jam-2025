@@ -58,15 +58,15 @@ func die():
 	Game.game_started = false
 	visible = false
 
-func playAnimation(velocity: Vector2) -> void:
-	if velocity.length() != 0:
-		if velocity.x < 0:
+func playAnimation(in_velocity: Vector2) -> void:
+	if in_velocity.length() != 0:
+		if in_velocity.x < 0:
 			direction = "side"
 			animations.flip_h = true
-		elif velocity.x > 0:
+		elif in_velocity.x > 0:
 			direction = "side"
 			animations.flip_h = false
-		elif velocity.y < 0:
+		elif in_velocity.y < 0:
 			direction = "top"
 		else: direction = "bot"
 		animations.play("walk-" + direction)

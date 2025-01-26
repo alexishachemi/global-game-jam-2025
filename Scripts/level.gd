@@ -27,8 +27,6 @@ var ascending := true
 var distance: float
 var spawn_timer: float = 0.0
 
-@onready var game_over_node := $GameOver
-
 func start_wave():
 	for i in range(enemies_to_spawn):
 		spawn_enemy()

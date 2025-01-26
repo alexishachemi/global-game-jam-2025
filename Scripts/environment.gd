@@ -11,7 +11,7 @@ extends Node3D
 @onready var animals: BackgroundAnimalsManager = $BackgroundAnimals
 @onready var animator: AnimationPlayer = $AnimationPlayer
 
-func _process(delta):
+func _process(_delta):
 	if Game.game_started and not $SurfaceLight.visible:
 		$SurfaceLight.visible = true
 		target = get_parent().get_node("CharacterView")
