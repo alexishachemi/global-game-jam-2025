@@ -19,7 +19,7 @@ var screen_center_2d: Vector2
 
 # only playAnimation should be using this variable
 # This is the direction of the sprite
-var direction: String;
+var direction: String = "bot";
 
 var _start_pos: Vector2
 
