@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgpj54aytw6or"]
 
-[ext_resource type="Script" path="res://Scenes/gun.gd" id="1_p66v0"]
+[ext_resource type="Script" path="res://Scripts/gun.gd" id="1_p66v0"]
 [ext_resource type="Texture2D" uid="uid://bdbi31vlkko43" path="res://Assets/gun/blumderbuss-anim.png" id="2_06xs3"]
 [ext_resource type="AudioStream" uid="uid://xqxg8upj0hsu" path="res://Assets/sound/bubble-pop.mp3" id="3_bl4fv"]
 

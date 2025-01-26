@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ct77bq48c8uw5"]
 
-[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_ndklo"]
-[ext_resource type="Texture2D" uid="uid://my1dm31y723j" path="res://Assets/gun/rock.png" id="2_s4jf5"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_ndklo"]
+[ext_resource type="Texture2D" uid="uid://dp01csgvacocq" path="res://Assets/bubbles/bubble2.png" id="2_dnvop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkebo"]
 size = Vector2(14, 14)
@@ -11,7 +11,7 @@ script = ExtResource("1_ndklo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.383725, 0.383725)
-texture = ExtResource("2_s4jf5")
+texture = ExtResource("2_dnvop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jkebo")

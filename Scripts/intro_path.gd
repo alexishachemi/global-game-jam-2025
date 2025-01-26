@@ -60,4 +60,3 @@ func _process(delta: float) -> void:
 		pnode.position = Vector3(0, 300, 0)
 		watershader.visible = false
 		Game.game_started = true
-	
