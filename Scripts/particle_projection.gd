@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var sprite_3d: NodePath
+@export var animator: AnimationPlayer
 @onready var sprite_3d_node = get_node(sprite_3d)
 @onready var home_sprite: Node2D = $Sprite2D
 
@@ -10,6 +11,7 @@ func _ready() -> void:
 	var viewport_rect = get_viewport().get_visible_rect()
 	screen_center_2d = viewport_rect.size / 2
 	global_position = screen_center_2d
+	animator.play("title")
 
 func _process(delta: float):
 	if not sprite_3d_node:

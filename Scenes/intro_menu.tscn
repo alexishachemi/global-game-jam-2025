@@ -1,15 +1,147 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8y4v2su6k8x"]
+[gd_scene load_steps=23 format=3 uid="uid://c8y4v2su6k8x"]
 
 [ext_resource type="Script" path="res://Scripts/intro_path.gd" id="1_vd87n"]
 [ext_resource type="Script" path="res://Scripts/sub_follow_path.gd" id="2_xaa3l"]
 [ext_resource type="Texture2D" uid="uid://5q3k1pno1fn1" path="res://Assets/submarine_resized.png" id="3_wuh46"]
-[ext_resource type="PackedScene" uid="uid://q87urgp564bc" path="res://Scenes/underwater_shader.tscn" id="4_b3u4x"]
+[ext_resource type="PackedScene" uid="uid://bs78cipryjfqd" path="res://Scenes/underwater_shader.tscn" id="4_b3u4x"]
 [ext_resource type="AudioStream" uid="uid://bdqkr3oksg34w" path="res://Assets/BOOBS_Intro.mp3" id="5_shqi7"]
 [ext_resource type="AudioStream" uid="uid://bkf6sdhp42pqh" path="res://Assets/Explosion_Intro.mp3" id="6_il76f"]
 [ext_resource type="AudioStream" uid="uid://c5qncgn5dcglw" path="res://Assets/Homesong.mp3" id="7_d15fj"]
 [ext_resource type="Script" path="res://Scripts/particle_projection.gd" id="8_pmhtb"]
 [ext_resource type="Texture2D" uid="uid://ry5d1gxv0qin" path="res://Assets/pixel.png" id="9_5llgf"]
-[ext_resource type="Texture2D" uid="uid://274e54p74fel" path="res://Assets/boobshome.png" id="10_qdqkl"]
+[ext_resource type="Texture2D" uid="uid://274e54p74fel" path="res://Assets/boobshome.png" id="10_jnnm6"]
+[ext_resource type="FontFile" uid="uid://dgnmlptky0pf0" path="res://Assets/GamiliaPixel-Regular.otf" id="11_fu400"]
+
+[sub_resource type="Animation" id="Animation_gejjn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1152, -177)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/start:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer:current_animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_kpwb2"]
+resource_name = "fade"
+
+[sub_resource type="Animation" id="Animation_41o88"]
+resource_name = "move"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/start:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 2.46667),
+"transitions": PackedFloat32Array(0.840898, 1.8025, 1.51572),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bdo6x"]
+resource_name = "title"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Title:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.170755, 4.28709),
+"update": 0,
+"values": [Vector2(-1152, -500), Vector2(-1152, -177)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/start:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer:current_animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.53333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h42ns"]
+_data = {
+"RESET": SubResource("Animation_gejjn"),
+"fade": SubResource("Animation_kpwb2"),
+"move": SubResource("Animation_41o88"),
+"title": SubResource("Animation_bdo6x")
+}
 
 [sub_resource type="Curve3D" id="Curve3D_40dw0"]
 _data = {
@@ -439,7 +571,25 @@ shader_parameter/color_value = Color(1, 1, 1, 1)
 shader_parameter/gravity = Vector3(0, -1e-06, 0)
 shader_parameter/sprite = ExtResource("3_wuh46")
 
+[sub_resource type="LabelSettings" id="LabelSettings_3f8ts"]
+font = ExtResource("11_fu400")
+font_size = 160
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_spj4t"]
+font = ExtResource("11_fu400")
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="IntroMenu" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Node2D")
+libraries = {
+"": SubResource("AnimationLibrary_h42ns")
+}
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
@@ -489,9 +639,10 @@ stream = ExtResource("7_d15fj")
 volume_db = -8.113
 parameters/looping = true
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("animator")]
 script = ExtResource("8_pmhtb")
 sprite_3d = NodePath("../Path3D/PathFollow3D/Camera3D/Path3D/PathFollow3D/Sprite3D")
+animator = NodePath("../AnimationPlayer")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
 emitting = false
@@ -504,5 +655,36 @@ explosiveness = 1.0
 local_coords = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-position = Vector2(98, -344)
-texture = ExtResource("10_qdqkl")
+position = Vector2(6.10352e-05, -0.999985)
+scale = Vector2(0.83179, 0.83179)
+texture = ExtResource("10_jnnm6")
+
+[node name="Title" type="Label" parent="Node2D/Sprite2D"]
+anchors_preset = -1
+anchor_left = 0.469
+anchor_top = 0.022
+anchor_right = 0.47
+anchor_bottom = 0.028
+offset_left = -2232.58
+offset_top = -205.512
+offset_right = 69.1351
+offset_bottom = 108.712
+text = "Battle Out  Of Bubble Sea"
+label_settings = SubResource("LabelSettings_3f8ts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start" type="Label" parent="Node2D/Sprite2D"]
+anchors_preset = -1
+anchor_left = 0.469
+anchor_top = 0.022
+anchor_right = 0.47
+anchor_bottom = 0.028
+offset_left = -2234.71
+offset_top = -58.5677
+offset_right = 66.9797
+offset_bottom = 255.656
+text = "Click to play"
+label_settings = SubResource("LabelSettings_spj4t")
+horizontal_alignment = 1
+vertical_alignment = 1
