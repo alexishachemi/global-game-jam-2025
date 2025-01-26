@@ -85,6 +85,8 @@ func update_ascension(delta):
 func _process(delta):
 	if not Game.game_started:
 		return
+	if not $AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
 	update_ascension(delta)
 	if not ascending and Input.is_action_pressed("ui_accept"):
 		resume_ascension()

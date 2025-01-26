@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3bvokyh62i7s"]
+[gd_scene load_steps=5 format=3 uid="uid://c3bvokyh62i7s"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_c8544"]
 [ext_resource type="PackedScene" uid="uid://dr36rc3vikrby" path="res://Scenes/Environment.tscn" id="1_lra0q"]
-[ext_resource type="PackedScene" path="res://Scenes/intro_menu.tscn" id="3_sgu42"]
+[ext_resource type="PackedScene" uid="uid://c8y4v2su6k8x" path="res://Scenes/intro_menu.tscn" id="3_sgu42"]
+[ext_resource type="AudioStream" uid="uid://43a2lkayf2ac" path="res://Assets/jaws.mp3" id="4_alcbr"]
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("environment")]
 script = ExtResource("1_c8544")
@@ -14,3 +15,7 @@ ascension_speed = 5.0
 [node name="Environment" parent="." instance=ExtResource("1_lra0q")]
 
 [node name="IntroMenu" parent="." instance=ExtResource("3_sgu42")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_alcbr")
+parameters/looping = true
