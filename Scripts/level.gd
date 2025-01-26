@@ -36,23 +36,17 @@ func start_wave():
 func spawn_enemy():
 	var enemy = enemy_scene.instantiate()
 	get_parent().add_child.call_deferred(enemy)
-	
-	# Define the screen or game area boundaries
 	var screen_width = get_viewport().get_visible_rect().size.x
 	var screen_height = get_viewport().get_visible_rect().size.y
-	
-	# Randomly choose a spawn edge (0: top, 1: right, 2: bottom, 3: left)
 	var spawn_edge = randi() % 4
-	
-	# Set the enemy's initial position based on the chosen edge
 	match spawn_edge:
-		0:  # Top edge
+		0:
 			enemy.global_position = Vector2(randf_range(0, screen_width), -50)
-		1:  # Right edge
+		1:
 			enemy.global_position = Vector2(screen_width + 50, randf_range(0, screen_height))
-		2:  # Bottom edge
+		2:
 			enemy.global_position = Vector2(randf_range(0, screen_width), screen_height + 50)
-		3:  # Left edge
+		3:
 			enemy.global_position = Vector2(-50, randf_range(0, screen_height))
 
 func resume_ascension():
