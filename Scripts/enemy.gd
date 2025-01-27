@@ -19,6 +19,7 @@ var is_alive = true
 @onready var enemy_audio = $AudioStreamPlayer2D
 @onready var animation_player = $AnimationPlayer
 @onready var death_audio = $enemy_death_audio
+@onready var sprite = $Sprite2D  # Reference to the Sprite2D node
 
 var player_path = "/root/Level/CharacterView/CharacterBody2D"
 @onready var player = get_parent().get_node(player_path)
@@ -53,6 +54,11 @@ func _physics_process(delta):
 	
 	player_position = player.position
 	target_position = (player_position - position).normalized()
+	
+	if target_position.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 	
 	if is_trembling:
 		tremble_timer += delta
