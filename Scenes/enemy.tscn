@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_n18ok"]
 [ext_resource type="Texture2D" uid="uid://b3q2g81eyjw7b" path="res://Assets/enemie assets/sword_fish.png" id="2_535id"]
 [ext_resource type="AudioStream" uid="uid://bchcio2f380eq" path="res://Assets/sound/sfx_hit.mp3" id="3_0rso4"]
-[ext_resource type="AudioStream" uid="uid://c700f85qerylh" path="res://Assets/sound/hamburgers.mp3" id="4_k3l0r"]
+[ext_resource type="AudioStream" uid="uid://dxw6mdspsw1gf" path="res://Assets/sound/death_village.mp3" id="4_trelq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p478t"]
 size = Vector2(123, 48)
@@ -67,4 +67,4 @@ libraries = {
 
 [node name="enemy_death_audio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -1)
-stream = ExtResource("4_k3l0r")
+stream = ExtResource("4_trelq")
