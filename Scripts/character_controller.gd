@@ -45,6 +45,7 @@ func take_damage(amount: int):
 	health -= amount
 	health = max(health, 0)
 	update_health_bar()
+	Game.portrait.play_face("hurt", 0.3)
 	if health <= 0:
 		die()
 
@@ -53,10 +54,11 @@ func update_health_bar():
 		health_bar.value = health
 
 func die():
-	Game.game_over.visible = true
 	Game.portrait.set_face("hurt")
 	Game.game_started = false
-	visible = false
+	$AnimatedSprite2D.visible = false
+	$HUD/GameOver.visible = true
+	$Gun/Sprite2D.visible = false
 
 func playAnimation(in_velocity: Vector2) -> void:
 	if in_velocity.length() != 0:

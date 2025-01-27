@@ -16,26 +16,24 @@ signal ascension_finished
 
 @export_group("Enemy Waves")
 const enemy_scene = preload("res://Scenes/enemy.tscn")
-@export var spawn_interval: float = 10
-@export var enemies_per_wave_increase: int = 1
-var current_wave: int = 0
-var enemies_to_spawn: int = 1
-var killed: int = 0
+@export var enemies_per_wave_increase: int = 3
+
+var enemies_to_spawn: int = 3
+var spawned: int = 0
 
 var interval: float = 0.0
 var ascending := true
 var distance: float
-var spawn_timer: float = 0.0
 
 func start_wave():
 	for i in range(enemies_to_spawn):
 		spawn_enemy()
-	current_wave += 1
+	spawned = enemies_to_spawn
 	enemies_to_spawn += enemies_per_wave_increase
-	spawn_timer = 0.0
 
 func spawn_enemy():
-	var enemy = enemy_scene.instantiate()
+	var enemy: Enemy = enemy_scene.instantiate()
+	enemy.dead.connect(_on_enemy_dead)
 	get_parent().add_child.call_deferred(enemy)
 	var screen_width = get_viewport().get_visible_rect().size.x
 	var screen_height = get_viewport().get_visible_rect().size.y
@@ -57,6 +55,7 @@ func resume_ascension():
 func stop_ascending():
 	Game.portrait.set_face("neutral")
 	ascending = false
+	start_wave()
 
 func update_ascension(delta):
 	if not ascending:
@@ -79,9 +78,6 @@ func update_ascension(delta):
 			ascension_stopped.emit()
 			break
 	Game.progress_bar.value = (distance * 100) / end
-	spawn_timer += delta
-	if spawn_timer >= spawn_interval:
-		start_wave()
 
 func _process(delta):
 	if not Game.game_started:
@@ -89,7 +85,7 @@ func _process(delta):
 	if not $AudioStreamPlayer.playing:
 		$AudioStreamPlayer.play()
 	update_ascension(delta)
-	if not ascending and Input.is_action_pressed("ui_accept"):
+	if not ascending and spawned <= 0:
 		resume_ascension()
 
 func _input(event):
@@ -98,3 +94,6 @@ func _input(event):
 
 func _ready() -> void:
 	Game.game_started = false
+
+func _on_enemy_dead():
+	spawned -= 1
