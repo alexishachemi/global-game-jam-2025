@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_snv8j"]
 [ext_resource type="PackedScene" uid="uid://dr36rc3vikrby" path="res://Scenes/Environment.tscn" id="2_jpd26"]
-[ext_resource type="PackedScene" uid="uid://c8y4v2su6k8x" path="res://Scenes/intro_menu.tscn" id="3_21ekp"]
+[ext_resource type="PackedScene" path="res://Scenes/intro_menu.tscn" id="3_21ekp"]
 [ext_resource type="AudioStream" uid="uid://43a2lkayf2ac" path="res://Assets/jaws.mp3" id="4_8uyfy"]
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("environment")]
