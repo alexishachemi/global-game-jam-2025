@@ -13,7 +13,7 @@ signal ascension_finished
 @export_group("Ascension")
 @export var ascension_speed: float = 1.0
 @export var end: float = 500
-@export var stops: Array[float] = [0, 100, 220, 350]
+@export var stops: Array[float] = [0, 100, 220, 350, 480]
 
 @export_group("Enemy Waves")
 const enemy_scene = preload("res://Scenes/enemy.tscn")
@@ -35,7 +35,7 @@ func start_wave():
 func spawn_enemy():
 	var enemy: Enemy = enemy_scene.instantiate()
 	enemy.dead.connect(_on_enemy_dead)
-	get_parent().add_child.call_deferred(enemy)
+	add_child.call_deferred(enemy)
 	var screen_width = get_viewport().get_visible_rect().size.x
 	var screen_height = get_viewport().get_visible_rect().size.y
 	var spawn_edge = randi() % 4
@@ -69,7 +69,6 @@ func update_ascension(delta):
 	distance = abs(environment.global_position.y)
 	if distance >= end:
 		ascension_finished.emit()
-		stop_ascending()
 	var current: float
 	for i in range(stops.size()):
 		current = stops[i]

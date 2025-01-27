@@ -52,13 +52,10 @@ func _physics_process(delta):
 	if not player or not is_alive or not Game.game_started:
 		return
 	
-	player_position = player.position
-	target_position = (player_position - position).normalized()
+	player_position = player.global_position
+	target_position = (player_position - global_position).normalized()
 	
-	if target_position.x < 0:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+	#sprite.flip_h = target_position.x > 0
 	
 	if is_trembling:
 		tremble_timer += delta
@@ -91,6 +88,7 @@ func take_damage(amount: int):
 	if health <= 0:
 		is_alive = false
 		death_audio.play()
+		$CollisionShape2D.set_deferred("disabled", true)
 		await death_audio.finished
 		die()
 
@@ -99,4 +97,5 @@ func _process(_delta):
 
 func die():
 	dead.emit()
+	sprite.visible = false
 	queue_free()
