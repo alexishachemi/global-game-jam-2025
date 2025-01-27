@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Global Game Jam 2025"
+config/name="Battle Out Of Bubble Sea"
 run/main_scene="res://Scenes/Level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/bubbles/bubble1.png"
+config/windows_native_icon="res://Assets/bubbles/bubble1ico.ico"
 
 [autoload]
 
