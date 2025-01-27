@@ -1,3 +1,4 @@
+class_name Level
 extends Node3D
 
 signal ascension_stopped
@@ -93,6 +94,7 @@ func _input(event):
 		get_tree().quit()
 
 func _ready() -> void:
+	Game.level = self
 	Game.game_started = false
 
 func _on_enemy_dead():

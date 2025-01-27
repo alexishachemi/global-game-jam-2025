@@ -30,6 +30,7 @@ var _start_pos: Vector2
 
 func _ready() -> void:
 	Game.player = self
+	Game.level.ascension_finished.connect(_on_ascension_finished)
 	if camera_target_3d:
 		_target_3d = get_node(camera_target_3d)
 	else:
@@ -93,3 +94,10 @@ func _physics_process(_delta: float) -> void:
 	_target_3d.global_position = Vector3(
 		(position.x - _start_pos.x) * dim_scale, _target_3d.global_position.y,
 		(position.y - _start_pos.y) * dim_scale)
+
+func _on_ascension_finished():
+	$HUD/GameOver/text.text = "You Win !"
+	Game.portrait.set_face("happy")
+	Game.game_started = false
+	$HUD/GameOver.visible = true
+	$Gun/Sprite2D.visible = false

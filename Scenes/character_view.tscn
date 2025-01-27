@@ -454,3 +454,5 @@ layout_mode = 1
 [node name="Character3DPosition" type="Marker3D" parent="."]
 
 [connection signal="timeout" from="CharacterBody2D/HUD/Portrait/Timer" to="CharacterBody2D/HUD/Portrait" method="_on_timer_timeout"]
+
+[editable path="CharacterBody2D/HUD/GameOver"]
