@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b4ush5jwjvvc8"]
+[gd_scene load_steps=67 format=3 uid="uid://b4ush5jwjvvc8"]
 
 [ext_resource type="Script" path="res://Scripts/character_controller.gd" id="1_cygh3"]
 [ext_resource type="PackedScene" uid="uid://q87urgp564bc" path="res://Scenes/underwater_shader.tscn" id="2_pedyg"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cupq0prycorw4" path="res://Assets/portait/hurt.png" id="14_tq3h1"]
 [ext_resource type="PackedScene" uid="uid://b0w5nyqovt0op" path="res://Scenes/game_over.tscn" id="17_0erhn"]
 [ext_resource type="PackedScene" uid="uid://cgpj54aytw6or" path="res://Scenes/gun.tscn" id="17_j5ebh"]
+[ext_resource type="Script" path="res://Scripts/player_area_3d.gd" id="19_mp7s5"]
+[ext_resource type="AudioStream" uid="uid://cx0873cssjylq" path="res://Assets/sound/more_oxygen.mp3" id="20_r5eqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mavn0"]
 
@@ -333,6 +335,8 @@ texture = SubResource("GradientTexture1D_ka4sy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2chi"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_c8py7"]
+
 [node name="CharacterView" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -341,8 +345,8 @@ script = ExtResource("3_f2mw0")
 target = NodePath("../Character3DPosition")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("health_bar")]
+collision_mask = 10
 script = ExtResource("1_cygh3")
-speed = 200.0
 health_bar = NodePath("HUD/Oxygen")
 camera_target_3d = NodePath("../Character3DPosition")
 
@@ -389,7 +393,8 @@ offset_top = 15.0
 offset_right = 170.0
 offset_bottom = 73.0
 scale = Vector2(3, 3)
-value = 100.0
+max_value = 300.0
+value = 300.0
 fill_mode = 3
 texture_under = ExtResource("6_ngqmq")
 texture_over = ExtResource("7_b4qow")
@@ -453,6 +458,20 @@ layout_mode = 1
 
 [node name="Character3DPosition" type="Marker3D" parent="."]
 
+[node name="Area3D" type="Area3D" parent="Character3DPosition" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("19_mp7s5")
+player = NodePath("../../CharacterBody2D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character3DPosition/Area3D"]
+shape = SubResource("SphereShape3D_c8py7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Character3DPosition/Area3D"]
+stream = ExtResource("20_r5eqa")
+
 [connection signal="timeout" from="CharacterBody2D/HUD/Portrait/Timer" to="CharacterBody2D/HUD/Portrait" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Character3DPosition/Area3D" to="Character3DPosition/Area3D" method="_on_body_entered"]
 
 [editable path="CharacterBody2D/HUD/GameOver"]

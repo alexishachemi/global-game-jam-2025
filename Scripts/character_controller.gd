@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 # Movement speed
-@export var speed: float = 2000.0
+@export var speed: float = 200.0
 @export var dim_scale: float = 0.02
 
 #player animation variable
@@ -10,7 +10,7 @@ extends CharacterBody2D
 var direction: String = "bot";
 
 # health bar variable
-@export var max_health: int = 100
+@export var max_health: int = 300
 var health: int
 @export var health_bar: TextureProgressBar
 
@@ -27,6 +27,16 @@ var viewport_rect: Rect2
 var screen_center_2d: Vector2
 
 var _start_pos: Vector2
+
+@export var dash_speed: float = 400.0
+@export var dash_duration: float = 0.2
+@export var double_tap_time: float = 0.3
+
+var is_dashing = false
+var dash_timer = 0.0
+var last_tap_dir = Vector2.ZERO
+var last_tap_time = 0.0
+var prev_input_direction = Vector2.ZERO
 
 func _ready() -> void:
 	Game.player = self
@@ -49,6 +59,12 @@ func take_damage(amount: int):
 	Game.portrait.play_face("hurt", 0.3)
 	if health <= 0:
 		die()
+
+func add_oxygen():
+	health += 30
+	health = min(health, max_health)
+	update_health_bar()
+	Game.portrait.play_face("happy", 0.3)
 
 func update_health_bar():
 	if health_bar:
@@ -76,24 +92,43 @@ func playAnimation(in_velocity: Vector2) -> void:
 	else:
 		animations.play("idle-" + direction)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not Game.game_started:
 		return
-	var input_direction = Vector2.ZERO
-	input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 
-	# Apply movement and update velocity
-	velocity = input_direction * speed
+	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	input_direction = input_direction.normalized()
+
+	# Detect new presses (transition from no input to some input)
+	if input_direction != Vector2.ZERO and prev_input_direction == Vector2.ZERO:
+		var now = Time.get_ticks_msec()
+		if input_direction == last_tap_dir and float(now - last_tap_time) < double_tap_time * 1000.0:
+			is_dashing = true
+			dash_timer = dash_duration
+		else:
+			last_tap_dir = input_direction
+			last_tap_time = now
+
+	prev_input_direction = input_direction
+
+	if is_dashing:
+		velocity = last_tap_dir.normalized() * dash_speed
+		dash_timer -= delta
+		if dash_timer <= 0.0:
+			is_dashing = false
+	else:
+		velocity = input_direction * speed
+
 	playAnimation(velocity)
 	move_and_slide()
 
-# Update the 3D position based on the 2D character's position
-	if not _target_3d:
-		return
-		
-	_target_3d.global_position = Vector3(
-		(position.x - _start_pos.x) * dim_scale, _target_3d.global_position.y,
-		(position.y - _start_pos.y) * dim_scale)
+	# Update the 3D node, etc.
+	if _target_3d:
+		_target_3d.global_position = Vector3(
+			(position.x - _start_pos.x) * dim_scale,
+			_target_3d.global_position.y,
+			(position.y - _start_pos.y) * dim_scale
+		)
 
 func _on_ascension_finished():
 	$HUD/GameOver/text.text = "You Win !"

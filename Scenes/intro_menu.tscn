@@ -158,7 +158,7 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="Shader" id="Shader_6ybum"]
+[sub_resource type="Shader" id="Shader_yjkaa"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's ParticleProcessMaterial.
 
 shader_type particles;
@@ -530,7 +530,7 @@ void process() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dce6r"]
-shader = SubResource("Shader_6ybum")
+shader = SubResource("Shader_yjkaa")
 shader_parameter/direction = Vector3(1, 0, 0)
 shader_parameter/spread = 0.0
 shader_parameter/flatness = 0.0

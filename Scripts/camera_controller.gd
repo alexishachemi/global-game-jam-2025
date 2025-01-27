@@ -18,9 +18,7 @@ func _ready() -> void:
 		push_error("Target node for camera not set!")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _target_node:
-		#Smoothly follow the target and apply the height adjustment
-		var target_position = _target_node.global_position
-		global_position = global_position.lerp(target_position, delta * smooth_speed)
+		global_position = _target_node.global_position
 		

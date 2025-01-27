@@ -10,7 +10,7 @@ extends PathFollow3D
 @onready var player_controller: PackedScene = preload("res://Scenes/character_view.tscn")
 @export var watershader: Node
 @export var homesprite: Sprite2D
-var homespritespeed: float = 100.0
+var homespritespeed: float = 200.0
 
 @export var lvl: Node3D
 

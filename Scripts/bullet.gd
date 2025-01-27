@@ -27,6 +27,7 @@ func spawn_impact_particles():
 func play_impact_sound():
 	var audio_player = AudioStreamPlayer.new()
 	audio_player.stream = IMPACT_SOUND
+	audio_player.volume_db = -10
 	audio_player.autoplay = true
 	audio_player.connect("finished", Callable(audio_player, "queue_free"))
 	get_parent().add_child(audio_player)

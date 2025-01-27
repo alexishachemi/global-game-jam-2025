@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal dead
 
 @export var speed = 100 
-@export var rush_speed = 200  # Speed when rushing
+@export var rush_speed = 300  # Speed when rushing
 @export var tremble_duration = 1.0  # Time to tremble before rushing
 @export var tremble_intensity = 5.0  # How much the enemy shakes
 
@@ -20,13 +20,16 @@ var is_alive = true
 @onready var animation_player = $AnimationPlayer
 @onready var death_audio = $enemy_death_audio
 @onready var sprite = $Sprite2D  # Reference to the Sprite2D node
+@onready var explode_particules = $GPUParticles2D
 
 var player_path = "/root/Level/CharacterView/CharacterBody2D"
 @onready var player = get_parent().get_node(player_path)
 
-@export var damage: int = 2
+@export var damage: int = 10
 @export var max_health: int = 10
 var health: int
+
+@export var turn_speed: float = 2.0
 
 func _ready():
 	health = max_health
@@ -66,9 +69,11 @@ func _physics_process(delta):
 			position += shake_offset * delta
 	
 	elif is_rushing:
-		velocity = target_position * rush_speed
+		velocity = Vector2.RIGHT.rotated(rotation) * rush_speed
 		move_and_slide()
-		look_at(player_position)
+		var desired_angle = (player_position - global_position).angle()
+		rotation = lerp_angle(rotation, desired_angle, turn_speed * delta)
+		#look_at(player_position)
 		
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
@@ -89,6 +94,8 @@ func take_damage(amount: int):
 		is_alive = false
 		death_audio.play()
 		$CollisionShape2D.set_deferred("disabled", true)
+		sprite.visible = false
+		explode_particules.emitting = true
 		await death_audio.finished
 		die()
 
@@ -97,5 +104,4 @@ func _process(_delta):
 
 func die():
 	dead.emit()
-	sprite.visible = false
 	queue_free()

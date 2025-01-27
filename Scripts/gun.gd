@@ -7,6 +7,7 @@ const BULLET = preload("res://Scenes/bullet.tscn")
 @onready var muzzle: Marker2D = $Canon
 @onready var gun_player = $AnimationPlayer
 @onready var gun_audio = $pop_audio
+@onready var player = get_parent()
 
 func _process(_delta: float) -> void:
 	if not Game.game_started:
@@ -26,3 +27,4 @@ func _process(_delta: float) -> void:
 		bullet_instance.rotation = rotation
 		gun_audio.play()
 		gun_player.play("shot")
+		player.take_damage(1)
